@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us - Bella's Bakes Soweto</title>
+</head>
+<body>
+
+<h1>Bella's Bakes</h1>
+<p>
+<a href="index.html">Home</a> |
+<a href="about.html">About</a> |
+<a href="creations.html">Creations</a> |
+<a href="enquiry.html">Enquiry</a> |
+<a href="contact.html">Contact</a>
+</p>
+<hr>
+
+<h1>Contact & Order - Bella's Bakes</h1>
+
+<!-- FORM SECTION -->
+<form id="contactForm">
+
+<label>Full Name *</label><br>
+<input type="text" id="fullName" value="Sanele Manzini" style="width:300px; padding:8px; background:#e6f2ff;"><br><br>
+
+<label>Email *</label><br>
+<input type="email" id="email" value="marconebos66@gmail.com" style="width:300px; padding:8px; background:#e6f2ff;"><br><br>
+
+<label>Phone</label><br>
+<input type="text" id="phone" value="0756666665" style="width:300px; padding:8px; background:#e6f2ff;"><br><br>
+
+<label>Cake Choice</label><br>
+<select id="cakeChoice" style="width:310px; padding:8px; background:#e6f2ff;">
+<option>Midnight Gold Drip - R550</option>
+<option>Red Velvet Royal - R500</option>
+<option>Strawberry Blush - R480</option>
+<option>Vanilla Dream Cloud - R450</option>
+<option>Caramel Goodness - R500</option>
+</select><br><br>
+
+<label>Toppings</label><br>
+<input type="checkbox"> Sprinkles
+<input type="checkbox"> Chocolate<br><br>
+
+<label>Delivery Method</label><br>
+<input type="radio" name="delivery" checked> Delivery
+<input type="radio" name="delivery"> Pickup<br><br>
+
+<!-- FIXED MESSAGE BOX - WILL TYPE NOW -->
+<label for="message">Message *</label><br>
+<textarea id="message" name="message" rows="5" cols="40" placeholder="Type your message here - e.g. I want vanilla flavour with gold drip, delivery on Friday..." style="padding:10px; background:#ffffcc; border:2px solid orange;"></textarea><br><br>
+
+<button type="button" onclick="sendWhatsApp()" style="padding:10px 20px; background:#ff69b4; color:white; border:none; cursor:pointer;">Send Message</button>
+
+</form>
+
+<hr>
+
+<!-- WHERE ARE WE SECTION - NEW -->
+<h2>📍 Where Are We - Mofolo, Soweto</h2>
+
+<p><b>Bella's Bakes Luxury Studio</b><br>
+Mofolo Central, Mofolo<br>
+Soweto, 1801<br>
+Gauteng, South Africa<br>
+Near Mofolo Park, Next to Spar</p>
+
+<p>
+<b>Collection Address:</b> 1234 Mofolo South, Soweto 1801 (By Appointment Only)<br>
+<b>WhatsApp:</b> 081 234 5678<br>
+<b>Email:</b> Via Enquiry Page
+</p>
+
+<h3>Working Hours at Mofolo:</h3>
+<table border="1" cellpadding="8">
+<tr><th>Day</th><th>Hours</th></tr>
+<tr><td>Monday - Friday</td><td>08:00 - 18:00</td></tr>
+<tr><td>Saturday</td><td>08:00 - 16:00</td></tr>
+<tr><td>Sunday</td><td>Closed - Weddings Only</td></tr>
+</table>
+
+<h3>Delivery from Mofolo:</h3>
+<ul>
+<li>Mofolo Collection - FREE</li>
+<li>Soweto Surrounding - R80</li>
+<li>Sandton R120, Joburg Central - R100</li>
+<li>Orders Over R1000 - FREE Delivery</li>
+</ul>
+
+<p><b>Note:</b> We are not a walk-in bakery. Please order 72 hours in advance. Book via Enquiry page to Come Say Hi!</p>
+
+<!-- Simple Google Map Link - No overlay so it won't block typing -->
+<p>
+<a href="https://www.google.com/maps/search/Mofolo+Soweto+1801" target="_blank">
+Click Here to View Us on Google Maps - Mofolo, Soweto
+</a>
+</p>
+
+<hr>
+<p>Bella's Bakes © 2026 | Mofolo, Soweto 1801</p>
+
+<script>
+function sendWhatsApp(){
+  const name = document.getElementById('fullName').value;
+  const msg = document.getElementById('message').value;
+  const cake = document.getElementById('cakeChoice').value;
+
+  if(!msg){
+    alert("Please type your message!");
+    return;
+  }
+  const text = `Hi Bella's Bakes! Order from ${name} - Cake: ${cake} - Message: ${msg}`;
+  window.open(`https://wa.me/27812345678?text=${encodeURIComponent(text)}`, '_blank');
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enquiry - Bella's Bakes Soweto - Order Cake</title>
+  <meta name="description" content="Order luxury cakes Soweto - enquiry form with delivery address">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { background: #fff; font-family: Arial, sans-serif; }
+    .enquiry-container {
+      max-width: 750px;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+    }
+    .enquiry-container h1 {
+      color: #d63384;
+      text-align: center;
+    }
+    .enquiry-container .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 30px;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-top: 18px;
+      margin-bottom: 6px;
+      color: #333;
+      font-size: 15px;
+    }
+    label span { color: red; }
+    input, select, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      background: #e6f2ff;
+      border: 1px solid #c2d9f0;
+      border-radius: 6px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: #ff69b4;
+      background: #fff;
+    }
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+    .btn-whatsapp {
+      width: 100%;
+      margin-top: 25px;
+      padding: 14px;
+      background: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .btn-whatsapp:hover { background: #d63384; }
+    .note { text-align: center; color: #666; font-size: 13px; margin-top: 15px; }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <header>
+    <nav style="display:flex; justify-content:space-between; align-items:center; padding:15px 30px; background:#2c2c2c;">
+      <div style="color:#ffab91; font-weight:bold; font-size:20px;">Bella's Bakes</div>
+      <div>
+        <a href="index.html" style="color:#ffab91; margin-left:20px; text-decoration:none;">Home</a>
+        <a href="about.html" style="color:#ffab91; margin-left:20px; text-decoration:none;">About</a>
+        <a href="creations.html" style="color:#ffab91; margin-left:20px; text-decoration:none;">Creations</a>
+        <a href="enquiry.html" style="color:white; margin-left:20px; text-decoration:none; font-weight:bold;">Enquiry</a>
+        <a href="contact.html" style="color:#ffab91; margin-left:20px; text-decoration:none;">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="enquiry-container">
+    <h1>Place Your Order</h1>
+    <p class="subtitle">Fill in your details - we reply within 2 hours. 72 hours notice required.</p>
+
+    <form id="enquiryForm" onsubmit="return false;">
+
+      <!-- 1. Contact Person* -->
+      <label>Contact Person<span>*</span></label>
+      <input type="text" id="fullName" placeholder="" required>
+
+      <!-- 2. Address* -->
+      <label>Address<span>*</span></label>
+      <input type="text" id="streetAddress" placeholder="Street Address" required>
+      <input type="text" id="streetAddress2" placeholder="Street Address Line 2" style="margin-top:10px;">
+      
+      <div class="row" style="margin-top:10px;">
+        <input type="text" id="city" placeholder="City" required>
+        <input type="text" id="region" placeholder="Region" required>
+      </div>
+
+      <div class="row" style="margin-top:10px;">
+        <input type="text" id="postal" placeholder="Postal / Zip Code" required>
+        <input type="text" id="country" placeholder="Country" value="South Africa" required>
+      </div>
+
+      <!-- 3. Cake Choice - Needed for Bella's -->
+      <label>Cake Choice<span>*</span></label>
+      <select id="cakeChoice" required>
+        <option value="">-- Select Your Cake --</option>
+        <option>Midnight Gold Drip - R550</option>
+        <option>Red Velvet Royal - R500</option>
+        <option>Strawberry Blush - R480</option>
+        <option>Vanilla Dream Cloud - R450</option>
+        <option>Caramel Goodness - R500</option>
+        <option>Lemon Zest Bliss - R470</option>
+        <option>Chocolate Bliss - R500</option>
+      </select>
+
+      <div class="row">
+        <div>
+          <label>Quantity</label>
+          <input type="number" id="quantity" min="1" value="1">
+        </div>
+        <div>
+          <label>Event Date</label>
+          <input type="date" id="eventDate">
+        </div>
+      </div>
+
+      <!-- 4. Phone Number -->
+      <label>Phone Number</label>
+      <input type="tel" id="phone" placeholder="### ### ####">
+
+      <!-- 5. Email Address -->
+      <label>Email Address</label>
+      <input type="email" id="email" placeholder="">
+
+      <!-- 6. Enquiry Details -->
+      <label>Enquiry Details</label>
+      <textarea id="message" placeholder="Tell us colour, flavour, message on cake, delivery instructions..."></textarea>
+
+      <button type="button" class="btn-whatsapp" onclick="sendWhatsAppEnquiry()">Send Enquiry via WhatsApp</button>
+
+      <p class="note">On click, your order will open in WhatsApp with Bella's number +27 81 234 5678.<br>
+      Delivery: Soweto R80, Sandton R120, JHB R100 FREE from R1500</p>
+
+    </form>
+  </main>
+
+  <footer style="background:#2c2c2c; color:#ffab91; text-align:center; padding:20px;">
+    Bella's Bakes © 2026
+  </footer>
+
+  <script>
+    // WhatsApp - works with your new form IDs
+    function sendWhatsAppEnquiry() {
+      const name = document.getElementById('fullName').value;
+      const street = document.getElementById('streetAddress').value;
+      const street2 = document.getElementById('streetAddress2').value;
+      const city = document.getElementById('city').value;
+      const region = document.getElementById('region').value;
+      const postal = document.getElementById('postal').value;
+      const country = document.getElementById('country').value;
+      const cake = document.getElementById('cakeChoice').value;
+      const qty = document.getElementById('quantity').value;
+      const date = document.getElementById('eventDate').value;
+      const phone = document.getElementById('phone').value;
+      const email = document.getElementById('email').value;
+      const details = document.getElementById('message').value;
+
+      if (!name || !street || !cake) {
+        alert("Please fill Contact Person, Street Address and Cake Choice");
+        return;
+      }
+
+      let text = `Hi Bella's Bakes! NEW ORDER%0A%0A*Contact:* ${name}%0A*Address:* ${street}, ${street2}, ${city}, ${region}, ${postal}, ${country}%0A*Cake:* ${cake}%0A*Qty:* ${qty}%0A*Date:* ${date}%0A*Phone:* ${phone}%0A*Email:* ${email}%0A*Details:* ${details}`;
+
+      const myNumber = "27812345678"; // Your WhatsApp number
+      const url = `https://api.whatsapp.com/send?phone=${myNumber}&text=${text}`;
+      window.open(url, '_blank');
+    }
+
+    // Auto-fill cake from Creations page ?cake=...
+    const urlParams = new URLSearchParams(window.location.search);
+    const cakeParam = urlParams.get('cake');
+    if (cakeParam) {
+      const select = document.getElementById('cakeChoice');
+      for (let opt of select.options) {
+        if (opt.text.toLowerCase().includes(cakeParam.toLowerCase())) {
+          opt.selected = true;
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
